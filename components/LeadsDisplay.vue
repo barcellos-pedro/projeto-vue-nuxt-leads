@@ -7,6 +7,11 @@
         placeholder="Search by name or bs"
       />
     </div>
+    <p v-if="$fetchState.pending">Fetching leads...</p>
+    <p v-else-if="$fetchState.error">An error occurred :(</p>
+    <div v-else>
+      <lead-card v-for="lead in leads" :key="lead.id" :lead="lead" />
+    </div>
   </main>
 </template>
 
