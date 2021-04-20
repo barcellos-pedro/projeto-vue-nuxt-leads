@@ -18,7 +18,7 @@ export default {}
 .blink {
   width: 25px;
   height: 25px;
-  background-color: light($secondary, 10%);
+  background-color: $secondary;
   border-radius: 100%;
   display: block;
   animation: 0.6s ease-in-out infinite alternate blinker;
