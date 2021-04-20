@@ -1,10 +1,10 @@
 <template>
   <div class="lead">
-    <p v-if="$fetchState.pending">
-      <loading-spinenr />
+    <p v-if="$fetchState.pending" class="lead__pending">
+      <loading-blink />
     </p>
-    <p v-else-if="$fetchState.error">An error occurred.</p>
-    <div v-else>
+    <p v-else-if="$fetchState.error" class="lead__error">An error occurred.</p>
+    <div v-else class="lead__fetched">
       <img
         v-for="data in leadPicture.results"
         :key="data.login.uuid"
@@ -54,6 +54,7 @@ export default {
   padding: 8px 16px;
   border: 1px solid #fff;
   transition: all 0.4s ease;
+  justify-content: center;
   &::after {
     content: '';
     display: block;
@@ -75,6 +76,9 @@ export default {
       border: 3px solid $green;
     }
   }
+}
+.lead__pending {
+  width: fit-content;
 }
 .lead__button {
   color: $dark-blue;
