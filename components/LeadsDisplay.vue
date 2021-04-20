@@ -8,8 +8,12 @@
         placeholder="Search by name or bs"
       />
     </div>
-    <p v-if="$fetchState.pending">Fetching leads...</p>
-    <p v-else-if="$fetchState.error">An error occurred :(</p>
+    <div v-if="$fetchState.pending" class="leads__fetching">
+      <loading-spinner />
+    </div>
+    <p v-else-if="$fetchState.error" class="leads__error">
+      An error occurred. Try again.
+    </p>
     <div v-else>
       <div class="leads__legend">
         <p></p>
@@ -39,6 +43,7 @@ export default {
       'https://jsonplaceholder.typicode.com/users'
     ).then((response) => response.json())
   },
+  fetchDelay: 1000,
   computed: {
     searchLead() {
       if (this.searchString === '' || this.searchString === undefined) {
@@ -99,5 +104,12 @@ export default {
   max-width: 100%;
   text-decoration: none;
   color: $default;
+}
+.leads__fetching,
+.leads__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
 }
 </style>
