@@ -1,7 +1,11 @@
 <template>
   <div class="lead">
-    <div v-for="data in leadPicture.results" :key="data.id">
+    <p v-if="$fetchState.pending">Loading image...</p>
+    <p v-else-if="$fetchState.error">An error occurred.</p>
+    <div v-else>
       <img
+        v-for="data in leadPicture.results"
+        :key="data.id"
         :src="data.picture.thumbnail"
         alt="lead picture"
         class="lead__image"
@@ -11,7 +15,6 @@
     <p>{{ lead.email }}</p>
     <p>{{ lead.company.name }}</p>
     <p>{{ lead.phone }}</p>
-    <p>{{ lead.company.bs }}</p>
   </div>
 </template>
 
@@ -35,20 +38,44 @@ export default {
 
 <style lang="scss" scoped>
 .lead {
-  padding: 0 1rem;
-  margin-top: 2rem;
-  display: flex;
-  justify-content: space-between;
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;
+  grid-gap: 0 1rem;
+  text-align: center;
   align-items: center;
+  padding: 8px 16px;
+  border: 1px solid #fff;
+  transition: all 0.4s ease;
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   &__image {
     border-radius: 100%;
   }
-  &__button {
-    color: $dark-blue;
-    transition: all 0.2s ease-in-out;
-    &:hover {
-      color: $light-blue;
+  &:hover {
+    border: 1px solid $green;
+    border-radius: 4px;
+    img {
+      border: 3px solid $green;
     }
   }
+}
+.lead__button {
+  color: $dark-blue;
+  transition: all 0.2s ease;
+  &:hover {
+    color: $light-blue;
+  }
+}
+p {
+  width: 100%;
+}
+img {
+  border: 3px solid #fff;
+  padding: 2px;
+  transition: border 0.4s ease;
 }
 </style>
