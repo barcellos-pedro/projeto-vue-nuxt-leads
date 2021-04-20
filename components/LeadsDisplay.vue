@@ -10,7 +10,9 @@
     <p v-if="$fetchState.pending">Fetching leads...</p>
     <p v-else-if="$fetchState.error">An error occurred :(</p>
     <div v-else>
-      <lead-card v-for="lead in leads" :key="lead.id" :lead="lead" />
+      <NuxtLink to="/" class="leads_card">
+        <lead-card v-for="lead in leads" :key="lead.id" :lead="lead" />
+      </NuxtLink>
     </div>
   </main>
 </template>
@@ -54,5 +56,11 @@ export default {
   &:focus {
     box-shadow: 0 0 4px $blue;
   }
+}
+.leads_card {
+  margin: 1rem 0;
+  max-width: 100%;
+  text-decoration: none;
+  color: $default;
 }
 </style>
