@@ -11,6 +11,14 @@
     <p v-if="$fetchState.pending">Fetching leads...</p>
     <p v-else-if="$fetchState.error">An error occurred :(</p>
     <div v-else>
+      <div class="leads__legend">
+        <p></p>
+        <p>Name</p>
+        <p>E-mail</p>
+        <p>Company</p>
+        <p>Phone</p>
+        <p>Company BS</p>
+      </div>
       <NuxtLink to="/" class="leads_card">
         <lead-card v-for="lead in searchLead" :key="lead.id" :lead="lead" />
       </NuxtLink>
@@ -72,6 +80,18 @@ export default {
   }
   &:focus {
     box-shadow: 0 0 4px $blue;
+  }
+}
+.leads__legend {
+  display: grid;
+  grid-template-columns: 8% 16% 24% 18% 10% 20%;
+  text-align: center;
+  margin-top: 2rem;
+  @media (max-width: 768px) {
+    display: none;
+  }
+  p {
+    color: lighten($default, 50%);
   }
 }
 .leads_card {
