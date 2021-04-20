@@ -5,7 +5,7 @@
     <div v-else>
       <img
         v-for="data in leadPicture.results"
-        :key="data.id"
+        :key="data.login.uuid"
         :src="data.picture.thumbnail"
         alt="lead picture"
         class="lead__image"
@@ -15,13 +15,17 @@
     <p>{{ lead.email }}</p>
     <p>{{ lead.company.name }}</p>
     <p>{{ lead.phone }}</p>
+    <p>{{ lead.company.bs }}</p>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    lead: Object,
+    lead: {
+      type: Object,
+      default: null,
+    },
   },
   data() {
     return {
@@ -40,7 +44,8 @@ export default {
 .lead {
   margin: 1rem 0;
   display: grid;
-  grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;
+  // grid-template-columns: 10% 16% 16% 16% 16% 16%;
+  grid-template-columns: 8% 13% 26% 13% 13% 16%;
   grid-gap: 0 1rem;
   text-align: center;
   align-items: center;
