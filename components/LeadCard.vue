@@ -1,6 +1,8 @@
 <template>
   <div class="lead">
-    <p v-if="$fetchState.pending">Loading image...</p>
+    <p v-if="$fetchState.pending">
+      <loading-spinenr />
+    </p>
     <p v-else-if="$fetchState.error">An error occurred.</p>
     <div v-else>
       <img
@@ -32,6 +34,7 @@ export default {
       leadPicture: [],
     }
   },
+  fetchDelay: 1000,
   async fetch() {
     this.leadPicture = await fetch(
       'https://randomuser.me/api/?results=1'
