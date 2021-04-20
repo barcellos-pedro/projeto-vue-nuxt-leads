@@ -89,7 +89,7 @@ export default {
 }
 .leads__legend {
   display: grid;
-  grid-template-columns: 8% 16% 24% 18% 10% 20%;
+  grid-template-columns: 11% 16% 24% 16% 10% 22%;
   text-align: center;
   margin-top: 2rem;
   @media (max-width: 768px) {
