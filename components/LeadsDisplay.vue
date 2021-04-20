@@ -2,6 +2,7 @@
   <main class="leads">
     <div class="leads__search">
       <input
+        v-model="searchString"
         type="text"
         class="search__input"
         placeholder="Search by name or bs"
@@ -11,7 +12,7 @@
     <p v-else-if="$fetchState.error">An error occurred :(</p>
     <div v-else>
       <NuxtLink to="/" class="leads_card">
-        <lead-card v-for="lead in leads" :key="lead.id" :lead="lead" />
+        <lead-card v-for="lead in searchLead" :key="lead.id" :lead="lead" />
       </NuxtLink>
     </div>
   </main>
@@ -22,12 +23,28 @@ export default {
   data() {
     return {
       leads: [],
+      searchString: undefined,
     }
   },
   async fetch() {
     this.leads = await fetch(
       'https://jsonplaceholder.typicode.com/users'
     ).then((response) => response.json())
+  },
+  computed: {
+    searchLead() {
+      if (this.searchString === '' || this.searchString === undefined) {
+        return this.leads
+      }
+      const byName = this.leads.filter((lead) =>
+        lead.name.toLowerCase().includes(this.searchString.toLowerCase())
+      )
+      const byCompanyBs = this.leads.filter((lead) =>
+        lead.company.bs.toLowerCase().includes(this.searchString.toLowerCase())
+      )
+      const result = [...byName, ...byCompanyBs]
+      return Array.from(new Set(result))
+    },
   },
 }
 </script>
