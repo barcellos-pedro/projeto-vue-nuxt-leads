@@ -96,7 +96,7 @@ export default {
     display: none;
   }
   p {
-    color: lighten($default, 50%);
+    color: #7d7d7d;
   }
 }
 .leads_card {
