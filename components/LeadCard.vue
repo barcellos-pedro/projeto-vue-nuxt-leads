@@ -1,19 +1,19 @@
 <template>
-  <div class="lead">
-    <p v-if="$fetchState.pending" class="lead__pending">
+  <div class="card">
+    <p v-if="$fetchState.pending" class="card__pending">
       <loading-blink />
     </p>
-    <p v-else-if="$fetchState.error" class="lead__error">An error occurred.</p>
-    <div v-else class="lead__fetched">
+    <p v-else-if="$fetchState.error" class="card__error">An error occurred.</p>
+    <div v-else class="card__fetched">
       <img
         v-for="data in leadPicture.results"
         :key="data.login.uuid"
         :src="data.picture.thumbnail"
         alt="lead picture"
-        class="lead__image"
+        class="card__image"
       />
     </div>
-    <NuxtLink to="/" class="lead__button">{{ lead.name }}</NuxtLink>
+    <NuxtLink to="/" class="card__button">{{ lead.name }}</NuxtLink>
     <p>{{ lead.email }}</p>
     <p>{{ lead.company.name }}</p>
     <p>{{ lead.phone }}</p>
@@ -44,7 +44,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.lead {
+.card {
   margin: 1rem 0;
   display: grid;
   grid-template-columns: 8% 13% 26% 13% 13% 16%;
@@ -77,10 +77,10 @@ export default {
     }
   }
 }
-.lead__pending {
+.card__pending {
   width: fit-content;
 }
-.lead__button {
+.card__button {
   color: $dark-blue;
   transition: all 0.2s ease;
   &:hover {

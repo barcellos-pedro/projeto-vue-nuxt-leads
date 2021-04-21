@@ -1,6 +1,6 @@
 <template>
-  <main class="leads">
-    <div class="leads__search">
+  <main class="display">
+    <div class="display__search">
       <input
         v-model="searchString"
         type="text"
@@ -8,14 +8,14 @@
         placeholder="Search by name or bs"
       />
     </div>
-    <div v-if="$fetchState.pending" class="leads__fetching">
+    <div v-if="$fetchState.pending" class="display__fetching">
       <loading-spinner />
     </div>
-    <p v-else-if="$fetchState.error" class="leads__error">
+    <p v-else-if="$fetchState.error" class="display__error">
       An error occurred. Try again.
     </p>
     <div v-else>
-      <div class="leads__legend">
+      <div class="display__legend">
         <p></p>
         <p>Name</p>
         <p>E-mail</p>
@@ -23,7 +23,7 @@
         <p>Phone</p>
         <p>Company BS</p>
       </div>
-      <NuxtLink to="/" class="leads_card">
+      <NuxtLink to="/" class="display_card">
         <lead-card v-for="lead in searchLead" :key="lead.id" :lead="lead" />
       </NuxtLink>
     </div>
@@ -63,7 +63,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.leads__search {
+.display__search {
   width: 50%;
   margin: 0 auto;
   display: flex;
@@ -87,7 +87,7 @@ export default {
     box-shadow: 0 0 4px $blue;
   }
 }
-.leads__legend {
+.display__legend {
   display: grid;
   grid-template-columns: 11% 16% 24% 16% 10% 22%;
   text-align: center;
@@ -99,14 +99,14 @@ export default {
     color: #7d7d7d;
   }
 }
-.leads_card {
+.display_card {
   margin: 1rem 0;
   max-width: 100%;
   text-decoration: none;
   color: $default;
 }
-.leads__fetching,
-.leads__error {
+.display__fetching,
+.display__error {
   display: flex;
   align-items: center;
   justify-content: center;
