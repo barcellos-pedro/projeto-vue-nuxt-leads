@@ -5,15 +5,19 @@
     </p>
     <p v-else-if="$fetchState.error" class="card__error">An error occurred.</p>
     <div v-else class="card__fetched">
-      <img
-        v-for="data in leadPicture.results"
-        :key="data.login.uuid"
-        :src="data.picture.thumbnail"
-        alt="lead picture"
-        class="card__image"
-      />
+      <NuxtLink :to="`/lead/${lead.id}`">
+        <img
+          v-for="data in leadPicture.results"
+          :key="data.login.uuid"
+          :src="data.picture.thumbnail"
+          alt="lead picture"
+          class="card__image"
+        />
+      </NuxtLink>
     </div>
-    <NuxtLink to="/" class="card__button">{{ lead.name }}</NuxtLink>
+    <NuxtLink :to="`/lead/${lead.id}`" class="card__button">{{
+      lead.name
+    }}</NuxtLink>
     <p>{{ lead.email }}</p>
     <p>{{ lead.company.name }}</p>
     <p>{{ lead.phone }}</p>
