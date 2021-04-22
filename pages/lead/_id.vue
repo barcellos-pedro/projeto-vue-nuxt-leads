@@ -1,8 +1,11 @@
 <template>
   <div class="lead">
-    <div v-if="$fetchState.pending" class="lead__pending">Fetching lead...</div>
+    <div v-if="$fetchState.pending" class="lead__pending">
+      <loading-spinner />
+    </div>
     <div v-else-if="$fetchState.error" class="lead__error">
-      An error occurred :(
+      An error occurred.
+      <NuxtLink to="/" class="lead__button">Back</NuxtLink>
     </div>
     <div v-else class="lead__fetched">
       <div class="data">
@@ -206,6 +209,18 @@ img {
     background-color: $default;
     color: #fff;
     border: 1px solid #fff;
+  }
+}
+.lead__pending,
+.lead__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  gap: 16px;
+  .lead__button {
+    margin: 0;
   }
 }
 </style>
