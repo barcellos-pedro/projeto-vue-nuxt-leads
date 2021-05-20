@@ -1,5 +1,9 @@
 # Projeto Vue/Nuxt.js
 
+> Projeto feito para conhecer esse framework massa!💕
+
+Vídeo usado como referência => [Nuxt JS Crash Course - 2021](https://www.youtube.com/watch?v=Wdmi4k7sFzU&pp=ugMICgJwdBABGAE%3D)
+
 ## Notas
 
  - Link para acessar em [produção](https://teste-frontend-instruct.herokuapp.com/).
