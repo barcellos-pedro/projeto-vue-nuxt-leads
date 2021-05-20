@@ -1,12 +1,9 @@
-# Teste Técnico Desenvolvedor(a) Frontend Júnior [REMOTO]
+# Projeto Vue/Nuxt.js
 
 ## Notas
 
  - Link para acessar em [produção](https://teste-frontend-instruct.herokuapp.com/).
- - Acessando através do link as requisições estão dando erro de cors. Porém rodando local está funcionando normalmente o projeto.
  - Para rodar abra o projeto no terminal e digite `npm run dev`
- - Se puderem dar um feedback e aproveitar para me dar umas dicas eu agradeço muito!
- - Obrigado pela oportunidade e pelo desafio!
 
 ## Imagens
 
